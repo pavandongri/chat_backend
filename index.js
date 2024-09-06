@@ -21,15 +21,11 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
-    console.log('a user connected: ' + socket.id);
-
     socket.on('chat message', (msg) => {
-        console.log('message: ' + msg.text);
         io.emit('chat message', msg);
     });
 
     socket.on('disconnect', () => {
-        console.log('user disconnected');
     });
 });
 
